@@ -179,7 +179,7 @@ export default {
       clearInterval(this.pollPlaying)
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
-      }, 1000)
+      }, 2500)
     },
 
     /**
