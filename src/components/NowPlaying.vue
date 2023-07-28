@@ -305,9 +305,9 @@ export default {
      */
     playerData: function() {
       this.$emit('spotifyTrackUpdated', this.playerData)
-      this.handleImageLoad()
-
-      
+      this.$nextTick(() => {
+        this.getAlbumColours()
+        })
     }
   }
 }
