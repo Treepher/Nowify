@@ -1,3 +1,4 @@
+
 <template>
   <div id="app">
     <div
@@ -10,6 +11,7 @@
           :src="player.trackAlbum.image"
           :alt="player.trackTitle"
           class="now-playing__image"
+          @load="handleImageLoad"
         />
       </div>
       <div class="now-playing__details">
@@ -70,6 +72,9 @@ export default {
      * Make the network request to Spotify to
      * get the current played track.
      */
+    handleImageLoad(){
+      this.getAlbumColours();
+    },
     async getNowPlaying() {
       let data = {}
 
@@ -116,6 +121,7 @@ export default {
         this.$nextTick(() => {
           this.$emit('spotifyTrackUpdated', data)
         })
+
       }
     },
 
@@ -138,10 +144,11 @@ export default {
       if (!this.player.trackAlbum?.image) {
         return
       }
-
+/*var(--colour-background-now-playing)
       /**
        * Run node-vibrant to get colours.
        */
+
       Vibrant.from(this.player.trackAlbum.image)
         .quality(1)
         .clearFilters()
@@ -172,7 +179,7 @@ export default {
       clearInterval(this.pollPlaying)
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
-      }, 2500)
+      }, 1000)
     },
 
     /**
@@ -198,7 +205,9 @@ export default {
         this.playerResponse.error?.status === 401 ||
         this.playerResponse.error?.status === 400
       ) {
+
         this.handleExpiredToken()
+
 
         return
       }
@@ -257,12 +266,16 @@ export default {
       this.swatches = albumColours
 
       this.colourPalette =
-        albumColours[Math.floor(Math.random() * albumColours.length)]
+        albumColours[Math.floor((Math.random() * albumColours.length))]
 
       this.$nextTick(() => {
         this.setAppColours()
       })
     },
+
+    
+   
+
 
     /**
      * Handle an expired access token from Spotify.
@@ -295,6 +308,7 @@ export default {
      */
     playerData: function() {
       this.$emit('spotifyTrackUpdated', this.playerData)
+      
 
       this.$nextTick(() => {
         this.getAlbumColours()
