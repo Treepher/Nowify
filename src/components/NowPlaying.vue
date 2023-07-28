@@ -310,9 +310,7 @@ export default {
       this.$emit('spotifyTrackUpdated', this.playerData)
       
 
-      this.$nextTick(() => {
-        this.getAlbumColours()
-      })
+      
     }
   }
 }
