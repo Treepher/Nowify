@@ -179,7 +179,7 @@ export default {
       clearInterval(this.pollPlaying)
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
-      }, 2500)
+      }, 100)
     },
 
     /**
@@ -267,10 +267,7 @@ export default {
 
       this.colourPalette =
         albumColours[Math.floor((Math.random() * albumColours.length))]
-
-      this.$nextTick(() => {
-        this.setAppColours()
-      })
+      this.setAppColours()
     },
 
     
@@ -308,7 +305,9 @@ export default {
      */
     playerData: function() {
       this.$emit('spotifyTrackUpdated', this.playerData)
-      
+      this.$nextTick(() => {
+            this.handleImageLoad()
+          })
 
       
     }
