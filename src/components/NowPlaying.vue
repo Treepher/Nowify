@@ -243,7 +243,16 @@ export default {
         }
       }
       this.handleImageLoad()
+      window.requestAnimationFrame(() => {})
+      /*const clickEvent = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+        });
+
+      window.dispatchEvent(clickEvent);
     },
+    */
 
     /**
      * Handle newly stored colour palette:
