@@ -88,7 +88,7 @@ export default {
           this.handleClickEvent()
         },200)
         setTimeout(()=>{
-          this.handleClickEvent()
+          window.location.reload()
         },100)
         
     },
@@ -254,7 +254,7 @@ export default {
       this.handleImageLoad()
       setTimeout(()=>{
           this.handleClickEvent()
-        },100)
+        },1000)
       
     },
     handleClickEvent(){
