@@ -87,6 +87,9 @@ export default {
         setTimeout(()=>{
           this.handleClickEvent()
         },200)
+        setTimeout(()=>{
+          this.handleClickEvent()
+        },200)
         
     },
     async getNowPlaying() {
