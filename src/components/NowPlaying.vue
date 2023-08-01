@@ -245,7 +245,7 @@ export default {
       this.handleImageLoad();
       setTimeout(() => {
         this.handleClickEvent()
-      }, 150);
+      }, 500);
       
       
     },
