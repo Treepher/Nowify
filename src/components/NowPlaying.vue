@@ -242,7 +242,9 @@ export default {
           image: this.playerResponse.item.album.images[0].url
         }
       }
-      this.handleImageLoad()
+      setTimeout(() => {
+      this.handleImageLoad();
+      }, 100);
       const clickEvent = new MouseEvent('click', {
         bubbles: true,
         cancelable: true,
