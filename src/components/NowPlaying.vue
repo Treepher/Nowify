@@ -85,9 +85,6 @@ export default {
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
         setTimeout(()=>{
-          this.handleClickEvent()
-        },200)
-        setTimeout(()=>{
           window.location.reload()
         },100)
         
@@ -252,9 +249,6 @@ export default {
         }
       }
       this.handleImageLoad()
-      setTimeout(()=>{
-          this.handleClickEvent()
-        },1000)
       
     },
     handleClickEvent(){
