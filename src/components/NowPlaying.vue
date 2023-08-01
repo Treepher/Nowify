@@ -243,7 +243,11 @@ export default {
         }
       }
       this.handleImageLoad()
-      window.requestAnimationFrame(() => {})
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          this.handleImageLoad();
+        });
+      }, 100);
       /*const clickEvent = new MouseEvent('click', {
         bubbles: true,
         cancelable: true,
