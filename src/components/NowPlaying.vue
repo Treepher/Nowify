@@ -84,6 +84,9 @@ export default {
       await this.getAlbumColours();
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
+        setTimeout(()=>{
+        window.dispatchEvent(new Event('resize'))
+        },100)
         
         
     },
@@ -247,9 +250,7 @@ export default {
         }
       }
       this.handleImageLoad()
-      setTimeout(()=>{
-        window.dispatchEvent(new Event('resize'))
-        },100)
+      
       
     },
     handleClickEvent(){
