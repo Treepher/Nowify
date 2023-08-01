@@ -248,6 +248,7 @@ export default {
           image: this.playerResponse.item.album.images[0].url
         }
       }
+      this.handleImageLoad()
       
     },
     handleClickEvent(){
