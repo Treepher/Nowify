@@ -84,9 +84,7 @@ export default {
       await this.getAlbumColours();
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
-        setTimeout(()=>{
-          window.location.reload()
-        },100)
+        
         
     },
     async getNowPlaying() {
@@ -249,6 +247,9 @@ export default {
         }
       }
       this.handleImageLoad()
+      setTimeout(()=>{
+          window.location.reload()
+        },100)
       
     },
     handleClickEvent(){
