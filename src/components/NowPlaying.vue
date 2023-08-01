@@ -248,7 +248,7 @@ export default {
       }
       this.handleImageLoad()
       setTimeout(()=>{
-          window.location.reload()
+        window.dispatchEvent(new Event('resize'))
         },100)
       
     },
