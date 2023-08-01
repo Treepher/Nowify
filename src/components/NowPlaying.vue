@@ -251,8 +251,9 @@ export default {
         });
 
       window.dispatchEvent(clickEvent);
+      */
     },
-    */
+    
 
     /**
      * Handle newly stored colour palette:
