@@ -242,12 +242,11 @@ export default {
           image: this.playerResponse.item.album.images[0].url
         }
       }
-      this.handleImageLoad()
       setTimeout(() => {
         requestAnimationFrame(() => {
           this.handleImageLoad();
         });
-      }, 100);
+      }, 50);
       /*const clickEvent = new MouseEvent('click', {
         bubbles: true,
         cancelable: true,
