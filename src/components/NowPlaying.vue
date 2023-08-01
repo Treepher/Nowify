@@ -73,7 +73,8 @@ export default {
      * get the current played track.
      */
     handleImageLoad(){
-      this.getAlbumColours();
+      this.getAlbumColours()
+      this.handleNowPlaying()
     },
     async getNowPlaying() {
       let data = {}
@@ -306,9 +307,8 @@ export default {
      */
     playerData: function() {
       this.$emit('spotifyTrackUpdated', this.playerData)
-      this.$nextTick(() => {
-        this.getAlbumColours()
-        })
+      this.getAlbumColours()
+      this.handleNowPlaying()
     }
   }
 }
