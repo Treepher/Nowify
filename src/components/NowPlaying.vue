@@ -242,9 +242,14 @@ export default {
           image: this.playerResponse.item.album.images[0].url
         }
       }
-      setTimeout(() => {
       this.handleImageLoad();
-      }, 100);
+      setTimeout(() => {
+        this.handleClickEvent()
+      }, 150);
+      
+      
+    },
+    handleClickEvent(){
       const clickEvent = new MouseEvent('click', {
         bubbles: true,
         cancelable: true,
@@ -252,9 +257,7 @@ export default {
         });
 
       window.dispatchEvent(clickEvent);
-      
     },
-    
 
     /**
      * Handle newly stored colour palette:
