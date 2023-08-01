@@ -306,7 +306,7 @@ export default {
     /**
      * Watch the returned track object.
      */
-    'player.trackTitle': function(newTitle,oldTitle){
+    'player.trackTitle': function(){
       this.handleNowPlaying()
     },
 
