@@ -8,8 +8,8 @@
       <div class="now-playing__cover" :key="playerData.trackId" v-show="isAlbumLoaded">
         <img
           v-if="isImageLoaded"
-          :src="player.trackAlbum.image"
-          :alt="player.trackTitle"
+          :src="playerData.trackAlbum.image"
+          :alt="playerData.trackTitle"
           class="now-playing__image"
           @load="handleImageLoad"
         />
@@ -150,7 +150,6 @@ export default {
        * No image (rare).
        */
       if (!this.player.trackAlbum?.image) {
-        this.isImageLoaded = false;
         this.isAlbumLoaded = true;
         return
       }
@@ -252,6 +251,7 @@ export default {
           image: this.playerResponse.item.album.images[0].url
         }
       }
+      this.handleImageLoad()
     },
 
     /**
