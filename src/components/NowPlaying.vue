@@ -67,6 +67,8 @@ export default {
 
   mounted() {
     this.setDataInterval()
+    const imgElement = document.querySelector('.now-playing__image');
+    imgElement.addEventListener('load', this.handleImageLoad);
   },
 
   beforeDestroy() {
