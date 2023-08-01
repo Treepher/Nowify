@@ -82,6 +82,10 @@ export default {
       await this.getAlbumColours();
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
+        setTimeout(()=>{
+          this.handleClickEvent()
+        },200)
+        
     },
     async getNowPlaying() {
       let data = {}
@@ -242,19 +246,17 @@ export default {
           image: this.playerResponse.item.album.images[0].url
         }
       }
-      this.handleImageLoad();
-      setTimeout(() => {
-        this.handleClickEvent()
-      }, 500);
-      
       
     },
     handleClickEvent(){
-      const clickEvent = new MouseEvent('click', {
+      requestAnimationFrame(() =>{
+        const clickEvent = new MouseEvent('click', {
         bubbles: true,
         cancelable: true,
         view: window
         });
+      })
+      
 
       window.dispatchEvent(clickEvent);
     },
