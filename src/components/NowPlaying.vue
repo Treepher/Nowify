@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <div
@@ -6,13 +5,18 @@
       class="now-playing"
       :class="getNowPlayingClass()"
     >
-      <div class="now-playing__cover">
+      <div class="now-playing__cover" :key="playerData.trackId" v-show="isAlbumLoaded">
         <img
+          v-if="isImageLoaded"
           :src="player.trackAlbum.image"
           :alt="player.trackTitle"
           class="now-playing__image"
           @load="handleImageLoad"
         />
+        <div v-else class="now-playing__image-placeholder">
+          <!-- You can add a loading spinner or message here -->
+          Loading...
+        </div>
       </div>
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
@@ -26,7 +30,7 @@
 </template>
 
 <script>
-import * as Vibrant from 'node-vibrant'
+
 
 import props from '@/utils/props.js'
 
@@ -46,6 +50,8 @@ export default {
       playerData: this.getEmptyPlayer(),
       colourPalette: '',
       swatches: [],
+      isImageLoaded: false,
+      isAlbumLoaded: false,
     }
   },
 
@@ -72,9 +78,10 @@ export default {
      * Make the network request to Spotify to
      * get the current played track.
      */
-    handleImageLoad(){
-      this.getAlbumColours()
-      this.handleNowPlaying()
+    async handleImageLoad(){
+      await this.getAlbumColours();
+        this.isAlbumLoaded = true;
+        this.handleNowPlaying()
     },
     async getNowPlaying() {
       let data = {}
@@ -143,20 +150,20 @@ export default {
        * No image (rare).
        */
       if (!this.player.trackAlbum?.image) {
+        this.isImageLoaded = false;
+        this.isAlbumLoaded = true;
         return
       }
+      /*.catch((error) => {
+        console.error(error);
+        this.isImageLoaded = false;
+        this.isAlbumLoaded = true;
+      })
+      */
 /*var(--colour-background-now-playing)
       /**
        * Run node-vibrant to get colours.
        */
-
-      Vibrant.from(this.player.trackAlbum.image)
-        .quality(1)
-        .clearFilters()
-        .getPalette()
-        .then(palette => {
-          this.handleAlbumPalette(palette)
-        })
     },
 
     /**
@@ -299,6 +306,10 @@ export default {
     /**
      * Watch the returned track object.
      */
+    'player.trackTitle': function(newTitle,oldTitle){
+      this.handleNowPlaying()
+    },
+
     playerResponse: function() {
       this.handleNowPlaying()
       this.$nextTick(() => {
