@@ -293,7 +293,7 @@ export default {
       if (newVal.status === false) {
         clearInterval(this.pollPlaying)
       }
-      this.handleNowPlaying()
+      
     },
 
     /**
@@ -301,6 +301,9 @@ export default {
      */
     playerResponse: function() {
       this.handleNowPlaying()
+      this.$nextTick(() => {
+        this.getAlbumColours()
+        })
     },
 
     /**
@@ -309,7 +312,7 @@ export default {
     playerData: function() {
       this.$emit('spotifyTrackUpdated', this.playerData)
       this.$nextTick(() => {
-        this.getAlbumColours()
+        this.handleNowPlaying()
         })
     }
   }
