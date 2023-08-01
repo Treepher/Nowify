@@ -11,6 +11,7 @@
           :src="playerData.trackAlbum.image"
           :alt="playerData.trackTitle"
           class="now-playing__image"
+          @load="handleImageLoad"
         />
         <div v-else class="now-playing__image-placeholder">
           <!-- You can add a loading spinner or message here -->
