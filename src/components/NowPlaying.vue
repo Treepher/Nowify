@@ -293,9 +293,7 @@ export default {
       if (newVal.status === false) {
         clearInterval(this.pollPlaying)
       }
-      this.$nextTick(() => {
-        this.handleNowPlaying()
-        })
+      this.handleNowPlaying()
     },
 
     /**
