@@ -180,7 +180,7 @@ export default {
       clearInterval(this.pollPlaying)
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
-      }, 2000)
+      }, 2500)
     },
 
     /**
@@ -293,6 +293,9 @@ export default {
       if (newVal.status === false) {
         clearInterval(this.pollPlaying)
       }
+      this.$nextTick(() => {
+        this.handleNowPlaying()
+        })
     },
 
     /**
@@ -307,8 +310,9 @@ export default {
      */
     playerData: function() {
       this.$emit('spotifyTrackUpdated', this.playerData)
-      this.getAlbumColours()
-      this.handleNowPlaying()
+      this.$nextTick(() => {
+        this.getAlbumColours()
+        })
     }
   }
 }
