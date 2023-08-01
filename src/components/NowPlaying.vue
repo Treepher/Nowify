@@ -89,7 +89,7 @@ export default {
         },200)
         setTimeout(()=>{
           this.handleClickEvent()
-        },200)
+        },100)
         
     },
     async getNowPlaying() {
@@ -252,17 +252,18 @@ export default {
         }
       }
       this.handleImageLoad()
+      setTimeout(()=>{
+          this.handleClickEvent()
+        },100)
       
     },
     handleClickEvent(){
-      requestAnimationFrame(() =>{
         const clickEvent = new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
           view: window
         });
         window.dispatchEvent(clickEvent)
-      })
     },
 
     /**
