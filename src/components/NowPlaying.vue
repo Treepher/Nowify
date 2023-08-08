@@ -81,6 +81,9 @@ export default {
      * get the current played track.
      */
     async handleImageLoad(){
+      setTimeout(()=>{
+          this.$forceUpdate()
+        },100)
       await this.getAlbumColours();
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
@@ -196,6 +199,9 @@ export default {
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
       }, 2000)
+      setTimeout(()=>{
+          this.$forceUpdate()
+        },100)
     },
 
     /**
