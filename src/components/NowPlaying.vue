@@ -81,9 +81,9 @@ export default {
      * get the current played track.
      */
     async handleImageLoad(){
-      await this.getAlbumColours();
-        this.isAlbumLoaded = true;
-        this.isImageLoaded = true;
+      this.getAlbumColours();
+      this.isAlbumLoaded = true;
+      this.isImageLoaded = true;
         
         
         
