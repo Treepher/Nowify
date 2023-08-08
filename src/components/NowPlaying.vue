@@ -84,9 +84,7 @@ export default {
       await this.getAlbumColours();
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
-        setTimeout(()=>{
-          this.$forceUpdate()
-        },200)
+        
         
         
     },
@@ -250,6 +248,9 @@ export default {
         }
       }
       this.handleImageLoad()
+      setTimeout(()=>{
+          this.$forceUpdate()
+        },200)
       
       
     },
