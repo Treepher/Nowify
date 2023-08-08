@@ -198,7 +198,7 @@ export default {
       clearInterval(this.pollPlaying)
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
-      }, 2000)
+      }, 20000)
       setTimeout(()=>{
           this.$forceUpdate()
         },100)
