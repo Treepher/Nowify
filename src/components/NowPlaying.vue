@@ -81,9 +81,12 @@ export default {
      * get the current played track.
      */
     async handleImageLoad(){
-      this.getAlbumColours();
-      this.isAlbumLoaded = true;
-      this.isImageLoaded = true;
+      await this.getAlbumColours();
+        this.isAlbumLoaded = true;
+        this.isImageLoaded = true;
+        setTimeout(()=>{
+          this.$forceUpdate()
+        },100)        
         
         
         
@@ -250,7 +253,7 @@ export default {
       this.handleImageLoad()
       setTimeout(()=>{
           this.$forceUpdate()
-        },200)
+        },100)
       
       
     },
