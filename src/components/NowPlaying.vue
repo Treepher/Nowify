@@ -122,6 +122,9 @@ export default {
           data = this.getEmptyPlayer()
           this.playerData = data
 
+          setTimeout(()=>{
+          this.$emit('spotifyTrackUpdated', data)
+          },200)
           this.$nextTick(() => {
             this.$emit('spotifyTrackUpdated', data)
           })
@@ -137,6 +140,9 @@ export default {
         data = this.getEmptyPlayer()
         this.playerData = data
 
+        setTimeout(()=>{
+          this.$emit('spotifyTrackUpdated', data)
+        },200)
         this.$nextTick(() => {
           this.$emit('spotifyTrackUpdated', data)
         })
@@ -198,7 +204,7 @@ export default {
       clearInterval(this.pollPlaying)
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
-      }, 10000)
+      }, 2500)
       setTimeout(()=>{
           this.$forceUpdate()
         },100)
