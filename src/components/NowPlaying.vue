@@ -85,8 +85,8 @@ export default {
         this.isAlbumLoaded = true;
         this.isImageLoaded = true;
         setTimeout(()=>{
-        window.dispatchEvent(new Event('resize'))
-        },100)
+          this.$forceUpdate()
+        },200)
         
         
     },
